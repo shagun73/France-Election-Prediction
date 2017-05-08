@@ -35,9 +35,9 @@ dbListTables(con8)
 tweets8 <- dbGetQuery( con8,'select * from data' )
 con9 <- dbConnect(RSQLite::SQLite(), dbname="C:\\Users\\Shagun\\Desktop\\Applied DataScience\\french-presidential-election\\database_16_1.sqlite")
 dbListTables(con9)
-tweets <- dbGetQuery( con9,'select * from data' )
+tweets9 <- dbGetQuery( con9,'select * from data' )
 #tweets = rbind(tweets0,tweets1,tweets2,tweets3,tweets4,tweets5,tweets6,tweets7,tweets8,tweets9)
-#tweets = rbind(tweets9)
+tweets = rbind(tweets6,tweets7,tweets8,tweets9)
 nrow(tweets) 
 
 
@@ -98,7 +98,7 @@ wordcloud(colnames(fillon[,-which(names(fillon) %in% candidates_names)]),
 
 macron <- subset(sparseData, tweets$mention_Macron == 1)
 wordcloud(colnames(macron[,-which(names(macron) %in% candidates_names)]), 
-          colSums(macron[,-which(names(macron) %in% candidates_names)]),
+          colSums(macron[,-which(names(macron) %in% candidates_names)]),MACRON 
           scale=c(3, 0.5),
           random.color=FALSE, 
           colors = c("#6BAED6", "#4292C6", "#2171B5", "#08519C", "#08306B"),
