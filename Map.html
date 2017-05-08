@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>France Map</title>
+
+    <style type="text/css">
+        #container {
+            height: 600px;
+            min-width: 400px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .loading {
+            margin-top: 10em;
+            text-align: center;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+<script src="api/js/jquery-1.11.3.min.js"></script>
+<script src="code/highmaps.src.js"></script>
+<script src="code/modules/data.js"></script>
+<script src="code/modules/exporting.js"></script>
+<script src="geo_json.js"></script>
+
+
+<div id="container" style="min-width: 1000px; max-width: 1000px"></div>
+
+
+<script type="text/javascript">
+
+    // Prepare random data
+    var data = [
+        ['fr-o', 65781],
+        ['fr-s', 14139],
+        ['fr-p', 48632],
+        ['fr-q', 48632],
+        ['fr-j', 698631],
+        ['fr-g', 10019],
+        ['fr-m', 73337],
+        ['fr-a', 14012],
+        ['fr-e', 97856],
+        ['fr-r', 72471],
+        ['fr-f', 30540],
+        ['fr-d', 12201],
+        ['fr-i', 8739],
+        ['fr-t', 45222],
+        ['fr-l', 5556],
+        ['fr-v', 131108],
+        ['fr-c', 10167],
+        ['fr-b', 24583],
+        ['fr-n', 67271],
+        ['fr-u', 142020],
+        ['fr-k', 60546],
+        ['fr-h', 2445]
+    ];
+
+    Highcharts.mapChart('container', {
+
+        title: {
+            text: 'France Map'
+        },
+
+        mapNavigation: {
+            enabled: true,
+            buttonOptions: {
+                verticalAlign: 'bottom'
+            }
+        },
+
+        colorAxis: {
+            tickPixelInterval: 100
+        },
+
+        series: [{
+            data: data,
+            mapData: geo,
+            joinBy: ['hc-key', 0],
+            keys: ['hc-key', 'value'],
+            name: 'data',
+            states: {
+                hover: {
+                    color: '#a4edba'
+                }
+            },
+            dataLabels: {
+                enabled: true,
+                format: '{point.properties.postal}'
+            }
+        }]
+    });
+
+//    $.getJSON('fr-all.geo.json', function (geojson) {
+//        // Initiate the chart
+//
+//    });
+
+</script>
+</body>
+</html>
